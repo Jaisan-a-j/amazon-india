@@ -12,39 +12,73 @@
   </head>
   <body>
     <header>
-      <section class="mobilenavbar"><h1>hello</h1></section>
+      <!-- Mobile side navugation bar -->
+      <section class="mobilenavbar">
+        <div class="mobilenavbariconsection">
+          <ion-icon class="mobileMenuClose" name="close-outline"></ion-icon>
+        </div>
+        <div class="mobilenavbarheadingsection">
+          <span>Browse</span>
+          <span>Amazon</span>
+        </div>
+        <div class="mobilenavbarordersection">
+          <span>Returns & Orders</span>
+        </div>
+        <div class="mobilenavbarcartsection">
+          <div>
+            <span class="cart-count">4</span>
+            <span class="material-symbols-outlined"> shopping_cart </span>
+          </div>
+          <div>
+            <p>cart</p>
+          </div>
+        </div>
+      </section>
+      <div class="overlay">hello</div>
+      <!-- web navigation bar -->
       <nav>
         <ul class="navlist">
           <li>
             <div class="navlogosection">
-              <img src="assets/images/amazonlogo1.png" alt="amazon logo" />
+              <img
+                src="assets/images/amazonlogo.png"
+                alt="amazon logo"
+                role="button"
+              />
             </div>
           </li>
           <li class="navsearchsection">
-            <input class="navsearchinput" type="text" name="" id="" />
+            <input
+              class="navsearchinput"
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search"
+            />
             <button class="navsearchbutton">
               <ion-icon class="navsearchicon" name="search-outline"></ion-icon>
             </button>
           </li>
           <li class="navordersection">
-            <p>Returns</p>
-            <p>& Orders</p>
+            <span>Returns</span>
+            <span>& Orders</span>
           </li>
           <li class="navcartsection">
             <div class="navcartsectionmain">
-              <span class="material-symbols-outlined">
-                <p>4</p>
-                shopping_cart</span
-              >
+              <div>
+                <span class="cart-count">4</span>
+                <span class="material-symbols-outlined"> shopping_cart </span>
+              </div>
               <p>cart</p>
             </div>
           </li>
           <li>
-            <ion-icon class="mobileMenuIcon" name="menu-outline"></ion-icon>
+            <ion-icon class="mobileMenuOpen" name="menu-outline"></ion-icon>
           </li>
         </ul>
       </nav>
     </header>
+    <!-- product listing section -->
     <main></main>
     <script
       type="module"

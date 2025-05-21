@@ -45,16 +45,93 @@ header {
   position: fixed;
   width: 100%;
   .mobilenavbar {
+    color: #fff;
     position: absolute;
     width: 60%;
     height: 100vh;
-    background-color: red;
+    background-color: #2c2222;
     z-index: 1;
     right: -450px;
-    transition: right 0.5s ease;
+    transition: right 0.2s ease;
+    padding: 1rem;
+    ion-icon {
+      font-size: 35px;
+      color: #fff;
+    }
+
+    .mobilenavbarheadingsection {
+      padding: 1rem 0.5rem;
+      display: flex;
+      height: 8rem;
+      flex-direction: column;
+      justify-content: end;
+
+      span {
+        &:nth-child(1) {
+          display: block;
+          font-size: 1.5rem;
+
+          font-weight: 700;
+        }
+        &:nth-child(2) {
+          display: block;
+          font-size: 2.4rem;
+        }
+      }
+    }
+    .mobilenavbarordersection {
+      padding: 1.5rem 0.5rem;
+      font-size: 1.5rem;
+      border: 1px solid #fff;
+      border-width: 1px 0px;
+    }
+
+    .mobilenavbarcartsection {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1.5rem 0.5rem;
+      font-size: 1.5rem;
+      border: 1px solid #fff;
+      border-width: 1px 0px;
+      div {
+        &:nth-child(1) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .cart-count {
+            color: #f5905a;
+          }
+        }
+        &:nth-child(2) {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+
     @media (min-width: $mobileScreenWidth) {
       display: none;
     }
+  }
+  .mobilenavbar.active {
+    right: 0;
+  }
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #2c2222;
+    z-index: 0;
+    right: -620px;
+    transition: right 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    @media (min-width: $mobileScreenWidth) {
+      display: none;
+    }
+  }
+  .overlay.active {
+    right: 0;
   }
 }
 
@@ -123,12 +200,15 @@ nav {
       &:nth-child(3) {
         flex: 1;
         text-align: center;
-        p {
+        span {
           &:nth-child(1) {
             font-weight: 500;
+            display: block;
           }
           &:nth-child(2) {
             font-weight: 700;
+            display: block;
+            padding-left: 9px;
           }
         }
         @media (max-width: $mobileScreenWidth) {
@@ -142,16 +222,20 @@ nav {
         .material-symbols-outlined {
           font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
           font-size: 35px;
-          p {
-            text-align: center;
-            font-size: 1rem;
-            color: #f5905a;
-          }
         }
         .navcartsectionmain {
           display: flex;
           align-items: center;
           justify-content: center;
+          div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .cart-count {
+              font-size: 1rem;
+              color: #f5905a;
+            }
+          }
         }
 
         @media (max-width: $mobileScreenWidth) {

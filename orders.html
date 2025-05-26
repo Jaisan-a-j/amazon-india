@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon-India</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- Mobile side navugation bar -->
+      <section class="mobilenavbar">
+        <div class="mobilenavbariconsection">
+          <ion-icon class="mobileMenuClose" name="close-outline"></ion-icon>
+        </div>
+        <div class="mobilenavbarheadingsection">
+          <span>Browse</span>
+          <span>Amazon</span>
+        </div>
+        <div class="mobilenavbarordersection">
+          <a href="/orders.html"> <span>Returns & Orders</span></a>
+        </div>
+        <a href="/cart.html">
+          <div class="mobilenavbarcartsection">
+            <div>
+              <span class="cart-count">4</span>
+              <span class="material-symbols-outlined"> shopping_cart </span>
+            </div>
+
+            <div>
+              <p>cart</p>
+            </div>
+          </div>
+        </a>
+      </section>
+      <div class="overlay"></div>
+      <!-- web navigation bar -->
+      <nav>
+        <ul class="navlist">
+          <li class="navlogoli">
+            <div class="navlogosection">
+              <a href="/home.html">
+                <img
+                  src="assets/images/amazonlogo.png"
+                  alt="amazon logo"
+                  role="button"
+                />
+              </a>
+            </div>
+          </li>
+          <li class="navsearchsection">
+            <input
+              class="navsearchinput"
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search"
+            />
+            <button class="navsearchbutton">
+              <ion-icon class="navsearchicon" name="search-outline"></ion-icon>
+            </button>
+          </li>
+          <li class="navordersection">
+            <a href="/orders.html" class="navordersectionroute">
+              <span>Returns</span>
+              <span>& Orders</span>
+            </a>
+          </li>
+          <li class="navcartsection">
+            <a href="/cart.html">
+              <div class="navcartsectionmain">
+                <div>
+                  <span class="cart-count">4</span>
+                  <span class="material-symbols-outlined"> shopping_cart </span>
+                </div>
+                <p>cart</p>
+              </div>
+            </a>
+          </li>
+          <li class="navmobilemenusection">
+            <ion-icon class="mobileMenuOpen" name="menu-outline"></ion-icon>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="ordermaincontainer">
+      <div class="ordermainsection">
+        <div class="orderheading">Your Orders</div>
+        <!-- Order first collection -->
+        <div class="ordercollection">
+          <!-- Order Title Section -->
+          <div class="ordertitle">
+            <div class="orderdatesection">
+              <span class="orderdateheading">Order Placed:</span
+              ><span class="orderdate">March 26</span>
+            </div>
+            <div class="ordertotal">
+              <span class="ordertotalheading">Total:</span
+              ><span class="ordertotalamount">$61.30</span>
+            </div>
+            <div class="orderidsection">
+              <span class="orderidheading">Order id:</span
+              ><span class="orderid">ID-A92X7B4Q</span>
+            </div>
+          </div>
+          <!-- Order items Section -->
+          <div class="orderitem">
+            <div class="orderitemimagesection">
+              <img
+                src="assets/images/basketball.png"
+                alt=""
+                class="orderitemimage"
+              />
+            </div>
+
+            <div class="orderitemdetails">
+              <span class="orderitemname">Black and Grey athletic</span>
+              <span class="orderitemarrivingdate">Arriving on : April 4</span>
+              <span class="orderitemquantity">Quantity: 2</span>
+            </div>
+            <div class="orderitembuyagain">
+              <button class="orderitembutton">Buy it again</button>
+            </div>
+          </div>
+          <div class="orderitem">
+            <div class="orderitemimagesection">
+              <img
+                src="assets/images/plates.png"
+                alt=""
+                class="orderitemimage"
+              />
+            </div>
+
+            <div class="orderitemdetails">
+              <span class="orderitemname">Black and Grey athletic</span>
+              <span class="orderitemarrivingdate">Arriving on : April 4</span>
+              <span class="orderitemquantity">Quantity: 2</span>
+            </div>
+            <div class="orderitembuyagain">
+              <button class="orderitembutton">Buy it again</button>
+            </div>
+          </div>
+        </div>
+        <div class="ordercollection">
+          <!-- Order Title Section -->
+          <div class="ordertitle">
+            <div class="orderdatesection">
+              <span class="orderdateheading">Order Placed:</span
+              ><span class="orderdate">March 26</span>
+            </div>
+            <div class="ordertotal">
+              <span class="ordertotalheading">Total:</span
+              ><span class="ordertotalamount">$61.30</span>
+            </div>
+            <div class="orderidsection">
+              <span class="orderidheading">Order id:</span
+              ><span class="orderid">ID-A92X7B4Q</span>
+            </div>
+          </div>
+          <!-- Order items Section -->
+          <div class="orderitem">
+            <div class="orderitemimagesection">
+              <img
+                src="assets/images/basketball.png"
+                alt=""
+                class="orderitemimage"
+              />
+            </div>
+
+            <div class="orderitemdetails">
+              <span class="orderitemname">Black and Grey athletic</span>
+              <span class="orderitemarrivingdate">Arriving on : April 4</span>
+              <span class="orderitemquantity">Quantity: 2</span>
+            </div>
+            <div class="orderitembuyagain">
+              <button class="orderitembutton">Buy it again</button>
+            </div>
+          </div>
+          <div class="orderitem">
+            <div class="orderitemimagesection">
+              <img
+                src="assets/images/plates.png"
+                alt=""
+                class="orderitemimage"
+              />
+            </div>
+
+            <div class="orderitemdetails">
+              <span class="orderitemname">Black and Grey athletic</span>
+              <span class="orderitemarrivingdate">Arriving on : April 4</span>
+              <span class="orderitemquantity">Quantity: 2</span>
+            </div>
+            <div class="orderitembuyagain">
+              <button class="orderitembutton">Buy it again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

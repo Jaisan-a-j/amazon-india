@@ -155,7 +155,6 @@ nav {
     align-items: center;
     list-style: none;
     color: #fff;
-    // li {
     .navlogoli {
       flex: 2;
       div {
@@ -281,7 +280,6 @@ nav {
         display: none;
       }
     }
-    // }
   }
 }
 
@@ -461,7 +459,6 @@ nav {
                 }
                 button {
                   margin-top: 0.5rem;
-                  // margin-left: 1rem;
                   border: none;
                   color: rgb(7, 183, 227);
                   background: none;
@@ -553,6 +550,121 @@ nav {
         border: none;
         border-radius: 5px;
         font-size: 1rem;
+      }
+    }
+  }
+}
+
+/*--- Order Section ---*/
+
+.ordermaincontainer {
+  padding-top: 5rem;
+  min-height: 100vh;
+  .ordermainsection {
+    padding: 4rem;
+    @include respond(lg) {
+      padding: 4rem 3rem;
+    }
+    @include respond(md) {
+      padding: 4rem 2rem;
+    }
+    @include respond(sm) {
+      padding: 4rem 1rem;
+    }
+    .orderheading {
+      font-weight: bold;
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+    $orderItemTitlePadding: 2rem;
+    @include respond(lg) {
+      $orderItemTitlePadding: 1rem;
+    }
+    @include respond(sm) {
+      $orderItemTitlePadding: 1rem 0.5rem;
+    }
+    .ordertitle {
+      display: flex;
+      padding: $orderItemTitlePadding;
+      background-color: rgb(248, 243, 243);
+      border-radius: 5px 5px 0 0;
+
+      .orderdatesection {
+        width: 20%;
+        @include respond(sm) {
+          width: 30%;
+        }
+      }
+      .orderdateheading,
+      .orderdate,
+      .ordertotalheading,
+      .ordertotalamount,
+      .orderidheading,
+      .orderid {
+        display: block;
+      }
+
+      .orderdateheading,
+      .ordertotalheading,
+      .orderidheading {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+      }
+
+      .ordertotal {
+        width: 40%;
+        @include respond(sm) {
+          width: 40%;
+        }
+      }
+      .orderidsection {
+        width: 40%;
+        @include respond(sm) {
+          width: 30%;
+        }
+      }
+    }
+
+    .orderitem {
+      min-height: 12rem;
+      padding: $orderItemTitlePadding;
+      display: flex;
+      align-items: center;
+      .orderitemimagesection {
+        width: 20%;
+        @include respond(sm) {
+          width: 30%;
+        }
+        .orderitemimage {
+          height: 5rem;
+        }
+      }
+      .orderitemdetails {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        font-size: 1.2rem;
+        @include respond(sm) {
+          width: 40%;
+        }
+        .orderitemname {
+          font-weight: bold;
+        }
+      }
+      .orderitembuyagain {
+        width: 40%;
+        text-align: center;
+        @include respond(sm) {
+          width: 30%;
+        }
+        .orderitembutton {
+          padding: 0.5rem;
+          border-radius: 5px;
+          border: none;
+          background-color: $themeBg;
+        }
       }
     }
   }

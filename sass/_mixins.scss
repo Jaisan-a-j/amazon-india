@@ -1,0 +1,26 @@
+$breakpoints: (
+  xsm: 431px,
+  sm: 600px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+@mixin respond($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+@mixin align_center() {
+  display: flex;
+  align-items: center;
+}
+@mixin justify_center() {
+  display: flex;
+  justify-content: center;
+}
+@mixin align-justify_center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

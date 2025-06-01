@@ -1,48 +1,40 @@
-/*--- variables ---- */
+@use "variables";
+@use "mixins";
 
-$buttonBg: rgb(243, 243, 11);
-$themeBg: rgb(247, 202, 0);
-$mobileScreenWidth: 600px;
-
-/*--- Mixins ---- */
-
-@mixin respond($breakpoint) {
-  @if $breakpoint == xsm {
-    @media (max-width: 431px) {
-      @content;
-    }
-  } @else if $breakpoint == sm {
-    @media (max-width: 600px) {
-      @content;
-    }
-  } @else if $breakpoint == md {
-    @media (max-width: 768px) {
-      @content;
-    }
-  } @else if $breakpoint == lg {
-    @media (max-width: 992px) {
-      @content;
-    }
-  } @else if $breakpoint == xl {
-    @media (max-width: 1200px) {
-      @content;
-    }
-  }
-}
-
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Amazon Ember", Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 html {
   font-size: 16px;
+  /*--- Media Quries ---- */
+  //1200
+  @include mixins.respond(xl) {
+    font-size: 15px;
+  }
+  //992
+  @include mixins.respond(lg) {
+    font-size: 14px;
+  }
+  //768
+  @include mixins.respond(md) {
+    font-size: 13px;
+  }
+  //600
+  @include mixins.respond(sm) {
+    font-size: 11px;
+  }
 }
 
-body.noscroll {
-  overflow: hidden;
+body {
+  font-family: "Amazon Ember", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  &.noscroll {
+    overflow: hidden;
+  }
 }
 
 header {
@@ -67,63 +59,58 @@ header {
       color: #fff;
     }
 
-    .mobilenavbarheadingsection {
-      padding: 1rem 0.5rem;
-      display: flex;
-      height: 8rem;
-      flex-direction: column;
-      justify-content: end;
-
-      span {
-        &:nth-child(1) {
-          display: block;
-          font-size: 1.5rem;
-
-          font-weight: 700;
-        }
-        &:nth-child(2) {
-          display: block;
-          font-size: 2.4rem;
-        }
-      }
-    }
-    .mobilenavbarordersection {
-      padding: 1.5rem 0.5rem;
-      font-size: 1.5rem;
-      border: 1px solid #fff;
-      border-width: 1px 0px;
-    }
-
-    .mobilenavbarcartsection {
-      display: flex;
-      gap: 0.5rem;
-      padding: 1.5rem 0.5rem;
-      font-size: 1.5rem;
-      border: 1px solid #fff;
-      border-width: 1px 0px;
-      div {
-        &:nth-child(1) {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          .cart-count {
-            color: #f5905a;
-          }
-        }
-        &:nth-child(2) {
-          display: flex;
-          align-items: center;
-        }
-      }
-    }
-
-    @media (min-width: $mobileScreenWidth) {
+    @media (min-width: variables.$breakpoint-sm) {
       display: none;
     }
+    &.active {
+      right: 0;
+    }
   }
-  .mobilenavbar.active {
-    right: 0;
+
+  .mobilenavbarheadingsection {
+    padding: 1rem 0.5rem;
+    display: flex;
+    height: 8rem;
+    flex-direction: column;
+    justify-content: end;
+
+    span {
+      &:nth-child(1) {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      &:nth-child(2) {
+        display: block;
+        font-size: 2.4rem;
+      }
+    }
   }
+  .mobilenavbarordersection,
+  .mobilenavbarcartsection {
+    padding: 1.5rem 0.5rem;
+    font-size: 1.5rem;
+    border: 1px solid #fff;
+    border-width: 1px 0px;
+  }
+
+  .mobilenavbarcartsection {
+    display: flex;
+    gap: 0.5rem;
+    div {
+      &:nth-child(1) {
+        flex-direction: column;
+        .cart-count {
+          color: #f5905a;
+        }
+      }
+      &:nth-child(2),
+      &:nth-child(1) {
+        @include mixins.align-center;
+      }
+    }
+  }
+
   .overlay {
     position: absolute;
     width: 100%;
@@ -134,41 +121,41 @@ header {
     transition: right 0.2s ease;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(3px);
-    @media (min-width: $mobileScreenWidth) {
+    @media (min-width: variables.$breakpoint-sm) {
       display: none;
     }
-  }
-  .overlay.active {
-    right: 0;
+    &.active {
+      right: 0;
+    }
   }
 }
 
 nav {
   padding: 0.5rem 2rem;
   background-color: #2c2222;
-  @include respond(xsm) {
+  @include mixins.respond(xsm) {
     padding: 0.5rem 0.5rem;
   }
   ul {
     height: 4rem;
-    display: flex;
-    align-items: center;
+    @include mixins.align-center;
     list-style: none;
     color: #fff;
     .navlogoli {
       flex: 2;
-      div {
-        display: flex;
-        align-items: center;
-      }
-      img {
-        height: 3rem;
-        margin-left: 1rem;
-        margin-top: 1rem;
-        @include respond(xsm) {
-          height: 2.7rem;
-          margin-left: 0.2rem;
-        }
+    }
+
+    .navlogosection {
+      @include mixins.align-center;
+    }
+
+    .navlogoimage {
+      height: 3rem;
+      margin-left: 1rem;
+      margin-top: 1rem;
+      @include mixins.respond(xsm) {
+        height: 2.7rem;
+        margin-left: 0.2rem;
       }
     }
 
@@ -178,29 +165,30 @@ nav {
       justify-content: center;
       height: 100%;
       flex: 3;
-      input {
-        flex: 0 0 90%;
-        border-radius: 7px 0px 0px 7px;
-        border: none;
-        padding: 7px;
-        @include respond(md) {
-          flex: 0 0 80%;
-          max-width: 80%;
-        }
-      }
-      button {
+      .navsearchbutton {
         flex: 0 0 10%;
         border-radius: 0px 7px 7px 0px;
         border: none;
-        background: $themeBg;
+        background: variables.$color-theme;
         .navsearchicon {
           font-size: 1.5rem;
           --ionicon-stroke-width: 46px;
         }
-        @include respond(md) {
+        @include mixins.respond(md) {
           flex: 0 0 20%;
           max-width: 20%;
         }
+      }
+    }
+
+    .navsearchinput {
+      flex: 0 0 90%;
+      border-radius: 7px 0px 0px 7px;
+      border: none;
+      padding: 7px;
+      @include mixins.respond(md) {
+        flex: 0 0 80%;
+        max-width: 80%;
       }
     }
 
@@ -214,26 +202,26 @@ nav {
     .navordersection {
       flex: 1;
       text-align: center;
-      .navordersectionroute {
-        text-decoration: none;
-        color: #fff;
-        display: inline-block;
-        width: fit-content;
-        span {
-          &:nth-child(1) {
-            font-weight: 500;
-            display: block;
-          }
-          &:nth-child(2) {
-            font-weight: 700;
-            display: block;
-            padding-left: 9px;
-          }
-        }
-      }
 
-      @media (max-width: $mobileScreenWidth) {
+      @media (max-width: variables.$breakpoint-sm) {
         display: none;
+      }
+    }
+
+    .navordersectionroute {
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+      span {
+        &:nth-child(1) {
+          font-weight: 500;
+          display: block;
+        }
+        &:nth-child(2) {
+          font-weight: 700;
+          display: block;
+          padding-left: 9px;
+        }
       }
     }
 
@@ -251,22 +239,19 @@ nav {
         display: inline-block;
       }
 
-      .navcartsectionmain {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        div {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          .cart-count {
-            font-size: 1rem;
-            color: #f5905a;
-          }
-        }
-      }
-      @media (max-width: $mobileScreenWidth) {
+      @media (max-width: variables.$breakpoint-sm) {
         display: none;
+      }
+    }
+    .navcartsectionmain {
+      @include mixins.align-justify-center;
+      div {
+        @include mixins.align-center;
+        flex-direction: column;
+        .cart-count {
+          font-size: 1rem;
+          color: #f5905a;
+        }
       }
     }
     .navmobilemenusection {
@@ -276,7 +261,7 @@ nav {
       }
       flex: 1;
       text-align: center;
-      @media (min-width: $mobileScreenWidth) {
+      @media (min-width: variables.$breakpoint-sm) {
         display: none;
       }
     }
@@ -298,13 +283,13 @@ nav {
   justify-items: center;
   align-items: center;
   gap: 2rem;
-  @include respond(xl) {
+  @include mixins.respond(xl) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @include respond(md) {
+  @include mixins.respond(md) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @include respond(sm) {
+  @include mixins.respond(sm) {
     grid-template-columns: repeat(1, 1fr);
   }
 }
@@ -328,7 +313,7 @@ nav {
     height: 5.5rem;
     padding: 0 0.5rem;
     padding-top: 0.7rem;
-    span {
+    .producttitle {
       display: inline-block;
       height: 100%;
       display: -webkit-box;
@@ -338,7 +323,7 @@ nav {
       text-overflow: ellipsis;
       line-height: 1.2rem;
       max-height: calc(1.2rem * 4);
-      @include respond(lg) {
+      @include mixins.respond(lg) {
         -webkit-line-clamp: 3;
         max-height: calc(1.2rem * 3);
       }
@@ -400,7 +385,7 @@ nav {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 2rem;
-    @include respond(md) {
+    @include mixins.respond(md) {
       grid-template-columns: 1fr;
     }
     .cartitemcontainer {
@@ -420,10 +405,10 @@ nav {
           display: flex;
           padding: 1rem;
           gap: 2rem;
-          @include respond(lg) {
+          @include mixins.respond(lg) {
             padding: 1rem 0;
           }
-          @include respond(md) {
+          @include mixins.respond(md) {
             gap: 0.8rem;
           }
           .cartitemamount {
@@ -433,10 +418,10 @@ nav {
               img {
                 height: 10rem;
                 padding: 0.5rem;
-                @include respond(lg) {
+                @include mixins.respond(lg) {
                   height: 8rem;
                 }
-                @include respond(sm) {
+                @include mixins.respond(sm) {
                   height: 7rem;
                 }
               }
@@ -453,7 +438,7 @@ nav {
               }
               .cartitembuttons {
                 display: flex;
-                @include respond(sm) {
+                @include mixins.respond(sm) {
                   flex-direction: column;
                   align-items: start;
                 }
@@ -465,7 +450,7 @@ nav {
                 }
                 .deletebutton {
                   margin-left: 1rem;
-                  @include respond(sm) {
+                  @include mixins.respond(sm) {
                     margin-left: 0;
                   }
                 }
@@ -530,8 +515,9 @@ nav {
       .itemusepaypal {
         padding: 0.8rem 0;
         div {
-          display: flex;
-          align-items: center;
+          @include mixins.align-center;
+          // display: flex;
+          // align-items: center;
           gap: 0.5rem;
         }
       }
@@ -546,7 +532,7 @@ nav {
       .cartorderbutton {
         padding: 0.8rem;
         width: 100%;
-        background-color: $themeBg;
+        background-color: variables.$color-theme;
         border: none;
         border-radius: 5px;
         font-size: 1rem;
@@ -562,13 +548,13 @@ nav {
   min-height: 100vh;
   .ordermainsection {
     padding: 4rem;
-    @include respond(lg) {
+    @include mixins.respond(lg) {
       padding: 4rem 3rem;
     }
-    @include respond(md) {
+    @include mixins.respond(md) {
       padding: 4rem 2rem;
     }
-    @include respond(sm) {
+    @include mixins.respond(sm) {
       padding: 4rem 1rem;
     }
     .orderheading {
@@ -577,11 +563,15 @@ nav {
       margin-bottom: 1rem;
     }
     $orderItemTitlePadding: 2rem;
-    @include respond(lg) {
+    @include mixins.respond(lg) {
       $orderItemTitlePadding: 1rem;
     }
-    @include respond(sm) {
+    @include mixins.respond(sm) {
       $orderItemTitlePadding: 1rem 0.5rem;
+    }
+    .ordercollection {
+      border: 1px solid rgb(217, 213, 213);
+      margin-top: 1rem;
     }
     .ordertitle {
       display: flex;
@@ -591,7 +581,7 @@ nav {
 
       .orderdatesection {
         width: 20%;
-        @include respond(sm) {
+        @include mixins.respond(sm) {
           width: 30%;
         }
       }
@@ -614,13 +604,13 @@ nav {
 
       .ordertotal {
         width: 40%;
-        @include respond(sm) {
+        @include mixins.respond(sm) {
           width: 40%;
         }
       }
       .orderidsection {
         width: 40%;
-        @include respond(sm) {
+        @include mixins.respond(sm) {
           width: 30%;
         }
       }
@@ -629,11 +619,12 @@ nav {
     .orderitem {
       min-height: 12rem;
       padding: $orderItemTitlePadding;
-      display: flex;
-      align-items: center;
+      @include mixins.align-center;
+      // display: flex;
+      // align-items: center;
       .orderitemimagesection {
         width: 20%;
-        @include respond(sm) {
+        @include mixins.respond(sm) {
           width: 30%;
         }
         .orderitemimage {
@@ -646,7 +637,7 @@ nav {
         flex-direction: column;
         gap: 0.2rem;
         font-size: 1.2rem;
-        @include respond(sm) {
+        @include mixins.respond(sm) {
           width: 40%;
         }
         .orderitemname {
@@ -656,42 +647,16 @@ nav {
       .orderitembuyagain {
         width: 40%;
         text-align: center;
-        @include respond(sm) {
+        @include mixins.respond(sm) {
           width: 30%;
         }
         .orderitembutton {
           padding: 0.5rem;
           border-radius: 5px;
           border: none;
-          background-color: $themeBg;
+          background-color: variables.$color-theme;
         }
       }
     }
-  }
-}
-
-/*--- Media Quries ---- */
-//1200
-@include respond(xl) {
-  html {
-    font-size: 15px;
-  }
-}
-//992
-@include respond(lg) {
-  html {
-    font-size: 14px;
-  }
-}
-//768
-@include respond(md) {
-  html {
-    font-size: 13px;
-  }
-}
-//600
-@include respond(sm) {
-  html {
-    font-size: 11px;
   }
 }
